@@ -12,13 +12,13 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * Câu 2:
  * Ban đầu cấu hình là:
  *
- * @ComponentScan(basePackages = "com.demo.service")
+ * @ComponentScan(basePackages = "ra.edu.service")
  *
  * Annotation này chỉ yêu cầu Spring quét các class trong package
- * "com.demo.service".
+ * "ra.edu.service".
  *
  * Tuy nhiên các lớp Controller của Spring MVC thường nằm trong
- * package "com.demo.controller".
+ * package "ra.edu.controller".
  *
  * Vì package này không nằm trong phạm vi quét,
  * nên Spring không phát hiện được các lớp có annotation @Controller.
