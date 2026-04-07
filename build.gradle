@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+group 'ra.edu'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.13.2'
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
+
+    // Trái tim của Spring MVC — tương thích Tomcat 10.x (jakarta.servlet)
+    implementation 'org.springframework:spring-webmvc:7.0.6'
+
+    // JSP API — cần thiết để biên dịch file .jsp
+    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.1'
+
+    // JSTL — dùng jakarta namespace, tương thích Tomcat 10.x
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2'
+
+    // JSTL implementation
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+test {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
+}
